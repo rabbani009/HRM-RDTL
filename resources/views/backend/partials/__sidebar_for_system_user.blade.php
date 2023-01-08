@@ -1,0 +1,180 @@
+<li
+    class="nav-item @if($commons['main_menu'] == 'report') menu-open @endif"
+    class="nav-item"
+>
+    <a
+        href="#"
+        class="nav-link @if($commons['main_menu'] == 'report') active @endif"
+    >
+        <i class="nav-icon fas far fa-chart-bar"></i>
+        <p>
+            REPORTS
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li
+            class="nav-item @if($commons['main_menu'] == 'report') menu-open @endif"
+        >
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'Activity-report') active @endif"
+            >
+                <i class="fa fa-sticky-note" style="font-size: 15px"></i>
+                <p>
+                    <span class="badge badge-success">Activities info</span>
+                    Report
+                </p>
+            </a>
+        </li>
+
+
+    </ul>
+</li>
+
+<li class="nav-header">Department</li>
+
+<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+    <a
+        href=""
+        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+    >
+        <i class="nav-icon fas fa-plus"></i>
+        <p> Add Department</p>
+    </a>
+</li>
+
+<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+    <a
+        href=""
+        class="nav-link @if($commons['current_menu'] == 'activity_index') active @endif"
+    >
+        <i class="nav-icon fas fa-list"></i>
+        <p>Add Sub Department</p>
+    </a>
+</li>
+
+<li class="nav-header">Employee</li>
+
+
+<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+    <a
+        href=""
+        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+    >
+        <i class="nav-icon fas fa-plus"></i>
+        <p>Position</p>
+    </a>
+</li>
+
+
+<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+    <a
+        href=""
+        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+    >
+        <i class="nav-icon fas fa-plus"></i>
+        <p>Add Employee</p>
+    </a>
+</li>
+
+
+<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+    <a
+        href=""
+        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+    >
+        <i class="nav-icon fas fa-plus"></i>
+        <p>Manage Employee</p>
+    </a>
+</li>
+
+<li class="nav-item @if($commons['main_menu'] == 'trainer') menu-open @endif">
+    <a
+        href="#"
+        class="nav-link @if($commons['main_menu'] == 'trainer') active @endif"
+    >
+        <i class="nav-icon fas fa-user-tie"></i>
+        <p>
+           Attendence
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+   
+        <li class="nav-item">
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
+            >
+                <i class="fas fa-plus nav-icon"></i>
+                <p>Monthly Attendence</p>
+            </a>
+        </li>
+      
+        <li class="nav-item">
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'trainer_index') active @endif"
+            >
+                <i class="fas fa-list nav-icon"></i>
+                <p>Attendence Log</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
+            >
+                <i class="fas fa-plus nav-icon"></i>
+                <p>Generate Report</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="nav-item @if($commons['main_menu'] == 'trainer') menu-open @endif">
+    <a
+        href="#"
+        class="nav-link @if($commons['main_menu'] == 'trainer') active @endif"
+    >
+        <i class="nav-icon fas fa-user-shield"></i>
+        <p>
+           Payroll
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+   
+        <li class="nav-item">
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
+            >
+                <i class="fas fa-plus nav-icon"></i>
+                <p>Sallary Generate</p>
+            </a>
+        </li>
+      
+        <li class="nav-item">
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'trainer_index') active @endif"
+            >
+                <i class="fas fa-list nav-icon"></i>
+                <p>Manage Sallary</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a
+                href=""
+                class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
+            >
+                <i class="fas fa-plus nav-icon"></i>
+                <p>Generate Report</p>
+            </a>
+        </li>
+    </ul>
+</li>
