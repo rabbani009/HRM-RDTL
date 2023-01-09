@@ -16,7 +16,7 @@
         <li
             class="nav-item @if($commons['main_menu'] == 'report') menu-open @endif"
         >
-            <a
+            {{-- <a
                 href=""
                 class="nav-link @if($commons['current_menu'] == 'Activity-report') active @endif"
             >
@@ -25,22 +25,22 @@
                     <span class="badge badge-success">Activities info</span>
                     Report
                 </p>
-            </a>
+            </a> --}}
         </li>
 
 
     </ul>
 </li>
 
-<li class="nav-header">Department</li>
+<li class="nav-header">Company</li>
 
 <li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
     <a
-        href=""
+        href="{{ route('office.create') }}"
         class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>
-        <p> Add Department</p>
+        <p> Add Office</p>
     </a>
 </li>
 
@@ -50,7 +50,7 @@
         class="nav-link @if($commons['current_menu'] == 'activity_index') active @endif"
     >
         <i class="nav-icon fas fa-list"></i>
-        <p>Add Sub Department</p>
+        <p>Add Department</p>
     </a>
 </li>
 

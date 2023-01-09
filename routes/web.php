@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthControllers\{
 use App\Http\Controllers\BackendControllers\{
     
     DashboardController,
+    OfficeController,
 
 };
 
@@ -48,7 +49,7 @@ Route::group(['namespace' => 'AuthControllers'], function () {
 
 Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function () {
     Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('get.dashboard');
-
+    Route::resource('office', OfficeController::class);
  
 
 });
