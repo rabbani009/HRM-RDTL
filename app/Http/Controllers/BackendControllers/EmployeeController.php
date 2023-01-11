@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\BackendControllers;
 
+use Carbon\Carbon;
 use App\Models\Office;
+use App\Models\Employee;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Department;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EmployeeStoreRequest;
 
 class EmployeeController extends Controller
 {
@@ -16,7 +20,23 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $commons['page_title'] = 'Employee List';
+        $commons['content_title'] = 'Employee';
+        $commons['main_menu'] = 'employee';
+        $commons['current_menu'] = 'employee_list';
+
+        $employee = Employee::where('status',1)
+                    ->with(['getOffice', 'getDepartment', 'createdBy', 'updatedBy'])->paginate(6);
+                    // dd($employee);
+
+        return view('backend.pages.employee.index',
+            compact(
+                'commons',
+                'employee',
+               
+                
+            )
+        );
     }
 
     /**
@@ -55,9 +75,38 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
-        //
+        $employee = new Employee();
+        $employee->office = $request->validated('office');
+        $employee->department = $request->validated('department');
+        $employee->employee_name = $request->validated('employee_name');
+        $employee->employee_id = $request->validated('employee_id');
+        $employee->gender = $request->validated('gender');
+        $employee->email = $request->validated('email');
+        $employee->date_of_birth = $request->validated('date_of_birth');
+        $employee->join_date = $request->validated('join_date');
+        $employee->sallary = $request->validated('sallary');
+        $employee->contact_number = $request->validated('contact_number');
+        $employee->employee_status = $request->validated('employee_status');
+        $employee->designation = $request->validated('designation');
+
+        $employee->status = 1;
+        $employee->created_at = Carbon::now();
+        $employee->created_by = Auth::user()->id;
+        $employee->save();
+
+        // dd($employee);
+
+        if ($employee->wasRecentlyCreated){
+            return redirect()
+                ->route('employee.index')
+                ->with('success', 'Employee created successfully!');
+        }
+
+        return redirect()
+            ->back()
+            ->with('failed', 'Employee is not created!');
     }
 
     /**

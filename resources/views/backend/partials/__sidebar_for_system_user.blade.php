@@ -81,7 +81,7 @@
 
 <li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
     <a
-        href=""
+        href="{{ route('employee.index') }}"
         class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>

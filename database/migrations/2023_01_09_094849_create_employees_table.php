@@ -19,12 +19,14 @@ return new class extends Migration
             $table->unsignedInteger('department');
             $table->string('employee_name');
             $table->string('employee_id')->nullable();
+            $table->boolean('gender')->nullable();
             $table->string('email')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->date('join_date')->nullable();
-            $table->string('employee_status')->nullable();
             $table->string('sallary')->nullable();
             $table->string('contact_number')->nullable();
+            $table->string('employee_status')->nullable(); 
+            $table->string('designation')->nullable();         
             $table->unsignedTinyInteger('status')->comment('0=Inactive,1=Active')->default(1);
             $table->timestamp('created_at')->nullable();
             $table->unsignedInteger('created_by')->nullable();
