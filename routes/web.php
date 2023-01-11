@@ -13,6 +13,10 @@ use App\Http\Controllers\BackendControllers\{
     
     DashboardController,
     OfficeController,
+    DepartmentController,
+    EmployeeController,
+    AjaxController,
+
 
 };
 
@@ -50,7 +54,16 @@ Route::group(['namespace' => 'AuthControllers'], function () {
 Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function () {
     Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('get.dashboard');
     Route::resource('office', OfficeController::class);
+    Route::resource('department', DepartmentController::class);
+    Route::resource('employee', EmployeeController::class);
  
+
+});
+
+
+Route::group(['prefix' => 'ajax', 'as' => 'ajax.'], function (){
+    Route::post('get-department-by-office', [AjaxController::class, 'getDepartmentsByOffice'])->name('get-department-by-office');
+    
 
 });
 
