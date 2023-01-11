@@ -46,7 +46,7 @@
 
 <li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
     <a
-        href=""
+        href="{{ route('department.create') }}"
         class="nav-link @if($commons['current_menu'] == 'activity_index') active @endif"
     >
         <i class="nav-icon fas fa-list"></i>
@@ -57,7 +57,7 @@
 <li class="nav-header">Employee</li>
 
 
-<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+{{-- <li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
     <a
         href=""
         class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
@@ -65,12 +65,12 @@
         <i class="nav-icon fas fa-plus"></i>
         <p>Position</p>
     </a>
-</li>
+</li> --}}
 
 
 <li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
     <a
-        href=""
+        href="{{ route('employee.create') }}"
         class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>
