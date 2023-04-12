@@ -16,6 +16,7 @@ use App\Http\Controllers\BackendControllers\{
     DepartmentController,
     EmployeeController,
     AjaxController,
+    UserChecktimeController
 
 
 };
@@ -56,7 +57,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
     Route::resource('office', OfficeController::class);
     Route::resource('department', DepartmentController::class);
     Route::resource('employee', EmployeeController::class);
- 
+
+
+    Route::get('/view', [UserChecktimeController::class, 'csvview'])->name('view');
+    Route::post('/import', [UserChecktimeController::class, 'import'])->name('import');
 
 });
 
