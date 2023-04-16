@@ -27,7 +27,7 @@
 Note:: * marked fields are required
 </div>
 </div>
-<form method="POST" action="{{ route('checktime.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('userinfo.store') }}" enctype="multipart/form-data">
             @csrf
 <div class="card-body">
 
@@ -35,9 +35,9 @@ Note:: * marked fields are required
 <div class="container-fluid card " style="overflow:hidden">
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-8">
             <div class="form-group @if ($errors->has('file')) has-error @endif">
-                <label for="">Upload Attendence CSV here *</label>
+                <label for="">Upload Attendence excel here *</label>
                 <input type="file" name="file" class="form-control @if($errors->has('file')) is-invalid @endif" value="{{ old('file') }}" placeholder="Enter Service Image" id="image">
                 @if($errors->has('service_image'))
                     <span class="error invalid-feedback">{{ $errors->first('service_image') }}</span>
@@ -47,16 +47,10 @@ Note:: * marked fields are required
             </div>
     </div>
 
+        
         <div class="col-md-4">
 
-            <label for="start_date" class="form-label">Start Date</label>
-            <input type="date" name="start_date" class="form-control" id="start_date" required>
-                
-        </div>
-        <div class="col-md-4">
-
-            <label for="end_date" class="form-label">End Date</label>
-            <input type="date" name="end_date" class="form-control" id="end_date" required>
+       
                 
         </div>
         

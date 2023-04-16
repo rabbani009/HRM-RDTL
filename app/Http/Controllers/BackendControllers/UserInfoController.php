@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Http\Controllers\BackendControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CheckTime;
+use App\Models\UserInfo;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\CheckTimeImport;
+use App\Imports\UserInfoImport;
 
-class CheckTimeController extends Controller
+class UserInfoController extends Controller
 {
     public function index()
     {
@@ -19,17 +20,14 @@ class CheckTimeController extends Controller
 
 
 
-        return view('backend.pages.checktime.index', compact('commons'));
+        return view('backend.pages.userinfo.index', compact('commons'));
 
     }
 
 
-public function store(Request $request)
+    public function store(Request $request)
 {
-    // Convert input dates to Y-m-d format
-    $startDate = date('Y-m-d', strtotime($request->input('start_date')));
-    $endDate = date('Y-m-d', strtotime($request->input('end_date')));
-
+//    dd($request->all());
     // Get the uploaded file
     $file = $request->file('file');
 
@@ -44,7 +42,7 @@ public function store(Request $request)
     // return $validated;
     
     // Create a new CheckTimeImport object with the date range filter
-    $import = new CheckTimeImport($startDate, $endDate);
+    $import = new UserInfoImport();
 
     // Import the file using the Excel facade
     Excel::import($import, $file);
@@ -56,15 +54,16 @@ public function store(Request $request)
     
     // Loop through the imported data and create CheckTime models
     foreach ($imported_data as $data) {
-        CheckTime::create($data);
+        UserInfo::create($data);
     }
 
     // Get the total number of imported rows
     $rows = $import->getRowCount();
 
     // Redirect back to the index page with a success message
-    return redirect()->route('checktime.index')->with('success', 'Imported CheckInTime Successfully');
+    return redirect()->route('userinfo.index')->with('success', 'Imported UserInfo Successfully');
 }
+
 
 
 
