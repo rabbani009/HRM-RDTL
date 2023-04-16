@@ -11,58 +11,17 @@ class CheckTimeController extends Controller
 {
     public function index()
     {
-        return view('backend.pages.checktime.index');
+
+        $commons['page_title'] = 'ADD Excel Files';
+        $commons['content_title'] = 'ADD Excel Files';
+        $commons['main_menu'] = 'Excel_index';
+        $commons['current_menu'] = 'Excel_index';
+
+
+
+        return view('backend.pages.checktime.index', compact('commons'));
+
     }
-
-//     public function store(Request $request)
-//     {
-//         $startDate = date('Y-m-d', strtotime($request->input('start_date')));
-//         $endDate = date('Y-m-d', strtotime($request->input('end_date')));
-
-// // dd( $startDate);
-//         $file = $request->file('file');
-        
-//         // $import = new CheckTimeImport;
-//         $import = new CheckTimeImport($startDate, $endDate);
-//         Excel::import($import, $file);
-//         // dd($file);
-//         $rows = $import->getRowCount();
-//         // dd( $rows);
-//         $imported_data = $import->getData();
-//         //  dd( $imported_data);
-//         foreach ($imported_data as $data) {
-//             CheckTime::create($data);
-//         }
-
-//         return redirect()->route('checktime.index')->with('success', 'Imported ' . $rows . ' rows.');
-//     }
-
-
-// public function store(Request $request)
-// {
-//     $startDate = date('Y-m-d', strtotime($request->input('start_date')));
-//     $endDate = date('Y-m-d', strtotime($request->input('end_date')));
-
-//     $file = $request->file('file');
-        
-//     $import = new CheckTimeImport($startDate, $endDate);
-//     Excel::import($import, $file);
-        
-//     $rows = $import->getRowCount();
-//     $imported_data = $import->getData();
-//     // dd($imported_data);
-//     $imported_rows = 0;
-
-//     foreach ($imported_data as $data) {
-//         $checkTime = \DateTime::createFromFormat('Y-m-d H:i:s', $data['check_time']);
-//         if ($checkTime >= $startDate && $checkTime <= $endDate) {
-//             CheckTime::create($data);
-//             $imported_rows++;
-//         }
-//     }
-
-//     return redirect()->route('checktime.index')->with('success', 'Imported ' . $imported_rows . ' out of ' . $rows . ' rows.');
-// }
 
 
 public function store(Request $request)
@@ -73,6 +32,16 @@ public function store(Request $request)
 
     // Get the uploaded file
     $file = $request->file('file');
+
+    // Validate the uploaded file
+    $validated = $request->validate([
+        'file' => 'required|mimes:xlsx,xls|max:5120'
+    ], [
+        'file.mimes' => 'The uploaded file must be a spreadsheet in either xlsx or xls format.',
+        'file.max' => 'The uploaded file must be smaller than 5MB.'
+    ]);
+
+    // return $validated;
     
     // Create a new CheckTimeImport object with the date range filter
     $import = new CheckTimeImport($startDate, $endDate);
@@ -94,7 +63,7 @@ public function store(Request $request)
     $rows = $import->getRowCount();
 
     // Redirect back to the index page with a success message
-    return redirect()->route('checktime.index')->with('success', 'Imported ' . $rows . ' rows.');
+    return redirect()->route('checktime.index')->with('success', 'Imported CheckInTime Successfully');
 }
 
 
