@@ -16,7 +16,8 @@ use App\Http\Controllers\BackendControllers\{
     DepartmentController,
     EmployeeController,
     AjaxController,
-    CheckTimeController
+    CheckTimeController,
+    UserInfoController
 
 
 };
@@ -65,6 +66,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
     //excel import routes.....
     Route::get('/checktime', [CheckTimeController::class, 'index'])->name('checktime.index');
     Route::post('/checktime', [CheckTimeController::class, 'store'])->name('checktime.store');
+
+      //excel UserInfoimport routes.....
+      Route::get('/userinfo', [UserInfoController::class, 'index'])->name('userinfo.index');
+      Route::post('/userinfo', [UserInfoController::class, 'store'])->name('userinfo.store');
 
 });
 
