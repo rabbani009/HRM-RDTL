@@ -104,11 +104,11 @@
    
         <li class="nav-item">
             <a
-                href=""
+                href="{{ route('checktime.index')}}"
                 class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
             >
                 <i class="fas fa-plus nav-icon"></i>
-                <p>Monthly Attendence</p>
+                <p>Import Excel file</p>
             </a>
         </li>
       
