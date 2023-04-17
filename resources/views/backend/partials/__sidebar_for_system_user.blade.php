@@ -114,7 +114,7 @@
       
         <li class="nav-item">
             <a
-                href=""
+                href="{{route('attendence.index')}}"
                 class="nav-link @if($commons['current_menu'] == 'trainer_index') active @endif"
             >
                 <i class="fas fa-list nav-icon"></i>

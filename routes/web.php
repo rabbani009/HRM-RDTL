@@ -17,7 +17,8 @@ use App\Http\Controllers\BackendControllers\{
     EmployeeController,
     AjaxController,
     CheckTimeController,
-    UserInfoController
+    UserInfoController,
+    AttendencelogController
 
 
 };
@@ -70,6 +71,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
       //excel UserInfoimport routes.....
       Route::get('/userinfo', [UserInfoController::class, 'index'])->name('userinfo.index');
       Route::post('/userinfo', [UserInfoController::class, 'store'])->name('userinfo.store');
+
+      //AttendenceLog
+
+      Route::get('/insert-attendance', [AttendencelogController::class, 'index'])->name('attendence.index');
 
 });
 

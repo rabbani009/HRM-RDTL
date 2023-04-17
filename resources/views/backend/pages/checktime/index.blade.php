@@ -37,7 +37,7 @@ Note:: * marked fields are required
 
     <div class="col-md-4">
             <div class="form-group @if ($errors->has('file')) has-error @endif">
-                <label for="">Upload Attendence CSV here *</label>
+                <label for="">Upload Attendence Excel here *</label>
                 <input type="file" name="file" class="form-control @if($errors->has('file')) is-invalid @endif" value="{{ old('file') }}" placeholder="Enter Service Image" id="image">
                 @if($errors->has('service_image'))
                     <span class="error invalid-feedback">{{ $errors->first('service_image') }}</span>
