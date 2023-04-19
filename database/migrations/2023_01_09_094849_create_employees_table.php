@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedTinyInteger('office');
             $table->unsignedInteger('department');
-            $table->string('employee_name');
-            $table->string('employee_id')->nullable();
+            $table->string('name');
+            $table->string('user_id')->nullable();
             $table->boolean('gender')->nullable();
             $table->string('email')->nullable();
             $table->date('date_of_birth')->nullable();

@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers\BackendControllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Helpers\AttendanceHelper;
+
+class EmployeeAttendenceController extends Controller
+{
+    public function index()
+    {
+        // echo "Employee Attendance entries created successfully";
+        // dd('print');
+        $entries = DB::table('employees')
+                    ->join('attendance_logs', 'employees.user_id', '=', 'attendance_logs.user_id')
+                    ->select('employees.name', 'attendance_logs.attend_date', 'attendance_logs.intime', 'attendance_logs.outtime')
+                    ->get();
+            // dd($entries);
+
+    
+        foreach ($entries as $entry) {
+            $employee_name = $entry->name ?? "Employee Name Not Found"; // If employee name not found in employees table, set default value
+            $late_status = AttendanceHelper::calculateLateStatus($entry->intime);
+            // Assuming you have a function to calculate the late status
+            $total_duty = AttendanceHelper::calculateTotalDuty($entry->intime, $entry->outtime);
+            // Assuming you have a function to calculate the total duty
+    
+            DB::table('employee_attendance_entries')->insert([
+                'name' => $employee_name,
+                'attend_date' => $entry->attend_date,
+                'intime' => $entry->intime,
+                'outtime' => $entry->outtime,
+                'late_status' => $late_status,
+                'total_duty' => $total_duty,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+    
+        return "Employee Attendance entries created successfully";
+    }
+}

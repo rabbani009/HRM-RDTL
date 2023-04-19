@@ -18,7 +18,8 @@ use App\Http\Controllers\BackendControllers\{
     AjaxController,
     CheckTimeController,
     UserInfoController,
-    AttendencelogController
+    AttendencelogController,
+    EmployeeAttendenceController
 
 
 };
@@ -73,8 +74,16 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
       Route::post('/userinfo', [UserInfoController::class, 'store'])->name('userinfo.store');
 
       //AttendenceLog
-
       Route::get('/insert-attendance', [AttendencelogController::class, 'index'])->name('attendence.index');
+
+      //generate attendence
+
+      Route::get('/attendance', [EmployeeAttendenceController::class, 'index'])->name('empattendence.index');
+
+
+     
+
+
 
 });
 
