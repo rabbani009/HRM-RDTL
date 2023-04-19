@@ -36,8 +36,8 @@
                     <div class="card-body pt-0">
                       <div class="row">
                         <div class="col-7">
-                          <h2 class="lead"><b>{{ $row->employee_name }}</b></h2>
-                          <p class="text-muted text-sm"><b>Employee ID: </b>{{ $row->employee_id ? $row->employee_id : 'Not Given'}} </p>
+                          <h2 class="lead"><b>{{ $row->name }}</b></h2>
+                          <p class="text-muted text-sm"><b>Employee ID: </b>{{ $row->user_id ? $row->user_id : 'Not Given'}} </p>
                           <ul class="ml-4 mb-0 fa-ul text-muted">
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Email:{{$row->email}}</li>
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: {{ $row->contact_number ? $row->contact_number : 'Not Given' }}</li>

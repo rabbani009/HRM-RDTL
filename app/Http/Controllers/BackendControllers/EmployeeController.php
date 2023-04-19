@@ -80,8 +80,8 @@ class EmployeeController extends Controller
         $employee = new Employee();
         $employee->office = $request->validated('office');
         $employee->department = $request->validated('department');
-        $employee->employee_name = $request->validated('employee_name');
-        $employee->employee_id = $request->validated('employee_id');
+        $employee->name = $request->validated('name');
+        $employee->user_id = $request->validated('user_id');
         $employee->gender = $request->validated('gender');
         $employee->email = $request->validated('email');
         $employee->date_of_birth = $request->validated('date_of_birth');

@@ -63,9 +63,9 @@
                             <div class="col-md-4">
                                 <div class="form-group @if ($errors->has('activity_title')) has-error @endif">
                                     <label for="">Employee Name *</label>
-                                    <input type="text" name="employee_name" class="form-control @if($errors->has('employee_name')) is-invalid @endif" value="{{ old('employee_name') }}" placeholder="Enter Employee Name">
-                                    @if($errors->has('employee_name'))
-                                        <span class="error invalid-feedback">{{ $errors->first('employee_name') }}</span>
+                                    <input type="text" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" value="{{ old('name') }}" placeholder="Enter Employee Name">
+                                    @if($errors->has('name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
                                     @else
                                         <span class="help-block"> This field is required. </span>
                                     @endif
@@ -73,11 +73,11 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div class="form-group @if ($errors->has('employee_name')) has-error @endif">
+                                <div class="form-group @if ($errors->has('user_id')) has-error @endif">
                                     <label for="">Employee Id *</label>
-                                    <input type="text" name="employee_id" class="form-control @if($errors->has('employee_id')) is-invalid @endif" value="{{ old('employee_id') }}" placeholder="Enter Employee Id">
-                                    @if($errors->has('employee_id'))
-                                        <span class="error invalid-feedback">{{ $errors->first('employee_id') }}</span>
+                                    <input type="text" name="user_id" class="form-control @if($errors->has('user_id')) is-invalid @endif" value="{{ old('user_id') }}" placeholder="Enter Employee Id">
+                                    @if($errors->has('user_id'))
+                                        <span class="error invalid-feedback">{{ $errors->first('user_id') }}</span>
                                     @else
                                         <span class="help-block"> This field is required. </span>
                                     @endif

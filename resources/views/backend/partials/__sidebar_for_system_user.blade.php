@@ -114,21 +114,21 @@
       
         <li class="nav-item">
             <a
-                href=""
+                href="{{route('attendence.index')}}"
                 class="nav-link @if($commons['current_menu'] == 'trainer_index') active @endif"
             >
                 <i class="fas fa-list nav-icon"></i>
-                <p>Attendence Log</p>
+                <p>Import Attendence Log</p>
             </a>
         </li>
 
         <li class="nav-item">
             <a
-                href=""
+                href="{{route('empattendence.index')}}"
                 class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
             >
                 <i class="fas fa-plus nav-icon"></i>
-                <p>Generate Report</p>
+                <p>Generate Total Report</p>
             </a>
         </li>
     </ul>

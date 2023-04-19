@@ -28,8 +28,8 @@ class EmployeeStoreRequest extends FormRequest
 
             'office' => 'required|exists:offices,id',
             'department' => 'required|exists:departments,id',
-            'employee_name' => 'required',
-            'employee_id'=> 'required|unique:employees',
+            'name' => 'required',
+            'user_id'=> 'required|unique:employees',
             'gender' => 'required|boolean',
             'email' => 'email|unique:employees',
             'date_of_birth' => 'nullable|date_format:Y-m-d',
