@@ -80,6 +80,8 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
 
       Route::get('/attendance', [EmployeeAttendenceController::class, 'index'])->name('empattendence.index');
 
+      Route::get('/attendance/show', [EmployeeAttendenceController::class, 'show'])->name('attendance.show');
+
 
      
 

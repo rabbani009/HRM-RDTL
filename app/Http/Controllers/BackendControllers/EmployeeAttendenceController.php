@@ -48,8 +48,46 @@ class EmployeeAttendenceController extends Controller
                 }
             }
             
-            return "Employee Attendance entries Generated successfully";
+            // return "Employee Attendance entries Generated successfully";
+
+            return redirect()
+            ->route('attendance.show')
+            ->with('success', 'Employee Attendance entries Generated successfully');
             
 }
+
+    public function show(){
+
+        $commons['page_title'] = 'Employees Attendence Details';
+        $commons['content_title'] = 'Show Employees';
+        $commons['main_menu'] = 'Employees';
+        $commons['current_menu'] = 'office_employees';
+
+        $employees = DB::table('employee_attendance_entries')
+        ->orderBy('name', 'asc')
+        ->paginate(18);
+
+
+            return view('backend.pages.employee_attendence.show',
+            compact(
+                'commons',
+                'employees',
+            
+            )
+        );
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }
