@@ -19,7 +19,8 @@ use App\Http\Controllers\BackendControllers\{
     CheckTimeController,
     UserInfoController,
     AttendencelogController,
-    EmployeeAttendenceController
+    EmployeeAttendenceController,
+    ReportController
 
 
 };
@@ -81,6 +82,12 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
       Route::get('/attendance', [EmployeeAttendenceController::class, 'index'])->name('empattendence.index');
 
       Route::get('/attendance/show', [EmployeeAttendenceController::class, 'show'])->name('attendance.show');
+
+      //Monthly report 
+
+      Route::get('/attendance/report', [ReportController::class, 'index'])->name('report.index');
+
+      Route::post('/generated/report', [ReportController::class, 'generateReport'])->name('report.show');
 
 
      
