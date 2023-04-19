@@ -16,16 +16,16 @@
         <li
             class="nav-item @if($commons['main_menu'] == 'report') menu-open @endif"
         >
-            {{-- <a
-                href=""
+             <a
+                href="{{ route('report.index') }}"
                 class="nav-link @if($commons['current_menu'] == 'Activity-report') active @endif"
             >
                 <i class="fa fa-sticky-note" style="font-size: 15px"></i>
                 <p>
-                    <span class="badge badge-success">Activities info</span>
+                    <span class="badge badge-success">Monthly -></span>
                     Report
                 </p>
-            </a> --}}
+            </a> 
         </li>
 
 

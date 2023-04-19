@@ -11,8 +11,7 @@ class EmployeeAttendenceController extends Controller
 {
     public function index()
     {
-        // echo "Employee Attendance entries created successfully";
-        // dd('print');
+
         $entries = DB::table('employees')
                     ->join('attendance_logs', 'employees.user_id', '=', 'attendance_logs.user_id')
                     ->select('employees.name', 'attendance_logs.attend_date', 'attendance_logs.intime', 'attendance_logs.outtime')
@@ -48,8 +47,31 @@ class EmployeeAttendenceController extends Controller
                 }
             }
             
-            return "Employee Attendance entries Generated successfully";
+            return redirect()
+            ->route('attendance.show')
+            ->with('success', 'Employee Attendance entries Generated successfully');
             
 }
+
+    public function show(){
+
+        $commons['page_title'] = 'Employees Attendence Details';
+        $commons['content_title'] = 'Show Employees';
+        $commons['main_menu'] = 'Employees';
+        $commons['current_menu'] = 'office_employees';
+
+        $employees = DB::table('employee_attendance_entries')
+        ->orderBy('name', 'asc')
+        ->paginate(18);
+
+
+            return view('backend.pages.employee_attendence.show',
+            compact(
+                'commons',
+                'employees',
+            
+            )
+        );
+    }
 
 }

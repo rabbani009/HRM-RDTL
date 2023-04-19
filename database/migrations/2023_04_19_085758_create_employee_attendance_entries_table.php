@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('outtime')->nullable();
             $table->string('late_status');
             $table->string('total_duty')->default("0"); // Change the data type to string
+            $table->unsignedTinyInteger('status')->comment('0=Inactive,1=Active')->default(1);
             $table->timestamps();
         });
     }
