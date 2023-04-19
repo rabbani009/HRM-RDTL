@@ -11,8 +11,7 @@ class EmployeeAttendenceController extends Controller
 {
     public function index()
     {
-        // echo "Employee Attendance entries created successfully";
-        // dd('print');
+
         $entries = DB::table('employees')
                     ->join('attendance_logs', 'employees.user_id', '=', 'attendance_logs.user_id')
                     ->select('employees.name', 'attendance_logs.attend_date', 'attendance_logs.intime', 'attendance_logs.outtime')
@@ -48,8 +47,6 @@ class EmployeeAttendenceController extends Controller
                 }
             }
             
-            // return "Employee Attendance entries Generated successfully";
-
             return redirect()
             ->route('attendance.show')
             ->with('success', 'Employee Attendance entries Generated successfully');
@@ -75,19 +72,6 @@ class EmployeeAttendenceController extends Controller
             
             )
         );
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

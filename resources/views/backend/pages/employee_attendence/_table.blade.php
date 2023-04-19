@@ -24,7 +24,7 @@
                         @include('backend.pages.commons.timestamps_th')
                         
 
-                        <th class="custom_actions">Actions</th>
+                        <!-- <th class="custom_actions">Actions</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -33,14 +33,14 @@
                         <td>{{ $loop->iteration }}.</td>
                         <td>{{ $row->name }}</td>
                         <td>{{ $row->attend_date }}</td>
-                        <td>{{ $row->intime }}</td>
-                        <td>{{ $row->outtime }}</td>
+                        <td class="custom_actions">{{ $row->intime }}</td>
+                        <td class="custom_actions">{{ $row->outtime }}</td>
                         <td>{{ $row->late_status }}</td>
                         <td>{{ $row->total_duty }}</td>
                      
                         @include('backend.pages.commons.timestamps_td')
 
-                        <td class="custom_actions">
+                        <!-- <td class="custom_actions">
                             <div class="btn-group">
                                 
                                 <a href="" class="btn btn-flat btn-outline-info btn-sm" data-toggle="tooltip" title="Edit">
@@ -54,7 +54,7 @@
                                     </button>
                                 </form>
                             </div>
-                        </td>
+                        </td> -->
                     </tr>
                 @endforeach
                 </tbody>
