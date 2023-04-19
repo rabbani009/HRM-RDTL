@@ -20,25 +20,36 @@ class EmployeeAttendenceController extends Controller
             // dd($entries);
 
     
-        foreach ($entries as $entry) {
-            $employee_name = $entry->name ?? "Employee Name Not Found"; // If employee name not found in employees table, set default value
-            $late_status = AttendanceHelper::calculateLateStatus($entry->intime);
-            // Assuming you have a function to calculate the late status
-            $total_duty = AttendanceHelper::calculateTotalDuty($entry->intime, $entry->outtime);
-            // Assuming you have a function to calculate the total duty
-    
-            DB::table('employee_attendance_entries')->insert([
-                'name' => $employee_name,
-                'attend_date' => $entry->attend_date,
-                'intime' => $entry->intime,
-                'outtime' => $entry->outtime,
-                'late_status' => $late_status,
-                'total_duty' => $total_duty,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
-    
-        return "Employee Attendance entries created successfully";
-    }
+            foreach ($entries as $entry) {
+                $employee_name = $entry->name ?? "Employee Name Not Found"; // If employee name not found in 
+                $late_status = AttendanceHelper::calculateLateStatus($entry->intime);
+            
+                $total_duty = AttendanceHelper::calculateTotalDuty($entry->intime, $entry->outtime);
+            
+                // check if the entry already exists
+                $existing_entry = DB::table('employee_attendance_entries')
+                    ->where('name', $employee_name)
+                    ->where('attend_date', $entry->attend_date)
+                    ->where('intime', $entry->intime)
+                    ->first();
+            
+                // insert the entry only if it does not exist
+                if (!$existing_entry) {
+                    DB::table('employee_attendance_entries')->insert([
+                        'name' => $employee_name,
+                        'attend_date' => $entry->attend_date,
+                        'intime' => $entry->intime,
+                        'outtime' => $entry->outtime,
+                        'late_status' => $late_status,
+                        'total_duty' => $total_duty,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+            
+            return "Employee Attendance entries Generated successfully";
+            
+}
+
 }
