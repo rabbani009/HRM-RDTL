@@ -21,6 +21,10 @@
 
 
             <div class="card">
+        @php
+            $absentCount = 0;
+            $holidayCount = 0;
+        @endphp
                 <div class="card-header">
                   <h3 class="card-title">Monthly Report</h3>
                 </div>
@@ -44,6 +48,14 @@
                     <tbody>
 
                     @foreach($reportData as $data)
+
+                        @if($data['status'] == 'Absent' && $data['is_friday'] != 'no' ) 
+                            @php $absentCount++;
+                        @endphp
+                        @endif
+                        @if($data['holiday'] == 'Holiday')
+                            @php $holidayCount++; @endphp
+                        @endif
                       <tr>
                             <td>{{ $data['date'] }}</td>
                             <td>{{ $data['employee_name'] }}</td>
@@ -87,20 +99,13 @@
 
                     </tbody>
                     <tfoot>
-                    <tr>
-
-                        <th>Date</th>
-                        <th>Employee Name</th>
-                        <th>Status</th>
-                        <th>Is Friday</th>
-                        <th>Holiday</th>
-                        <th>Intime</th>
-                        <th>Outtime</th>
-                        <th>Late Status</th>
-                        <th>Total Duty</th>
-
-                    </tr>
-                    </tfoot>
+                <tr>
+                    <th colspan="3"></th>
+                    <th>Total Absent: {{ $absentCount }}</th>
+                    <th colspan="4"></th>
+                    <th>Total Holidays: {{ $holidayCount }}</th>
+                </tr>
+            </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -169,11 +174,11 @@
     extend: 'pdfHtml5',
     title: 'Attendence Sheet',
     message: '',
-    orientation: 'landscape',
-    pageSize: 'LEGAL',
+    orientation: 'potrail',
+    pageSize: 'A4',
 
     customize: function (doc) {
-    doc.pageMargins = [10,10,10,10];
+    doc.pageMargins = [80,50,0,100];
     doc.defaultStyle.fontSize = 7;
     doc.styles.tableHeader.fontSize = 7;
     doc.styles.title.fontSize = 9;
@@ -184,7 +189,7 @@
     doc['footer']=(function(page, pages) {
     return {
         columns: [
-            'This is your left footer column',
+            'Employee Attendence System',
             {
                 // This is the right column
                 alignment: 'right',
