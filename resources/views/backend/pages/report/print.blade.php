@@ -190,9 +190,9 @@
     {
     text: 'PDF',
     extend: 'pdfHtml5',
-    title: 'Employee Attendence Overview',
+    title: 'Employee Attendence Monthly Overview',
     message: '',
-    orientation: 'potrail',
+    orientation: 'potrait',
     pageSize: 'A4',
 
     customize: function (doc) {
@@ -207,7 +207,7 @@
     doc['footer']=(function(page, pages) {
     return {
         columns: [
-            'Employee Attendence System',
+            'Employee Attendence Monthly Overview',
             {
                 // This is the right column
                 alignment: 'right',
