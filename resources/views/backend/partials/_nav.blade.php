@@ -7,9 +7,13 @@
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <div class="custom_title">
-                <p class="mb-0"> Radisson Digital Technology Limited.</p>
+                <!-- <p class="mb-0"> Radisson Digital Technology Limited.</p>
                 <small class="mb-0 text-maroon"
-                    >H R M</small
+                    >H R M</small> -->
+
+                    <p class="mb-0 text-maroon" style="font-family:Courier New"> <span style="font-family:Century Gotic">R</span>adisson Digital Technology Limited.</p>
+                    <small class="mb-0 text-blue"
+                    >H R M</small>
                 
             </div>
         </li>
