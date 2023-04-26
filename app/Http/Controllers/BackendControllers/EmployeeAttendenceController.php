@@ -18,20 +18,20 @@ class EmployeeAttendenceController extends Controller
                     ->get();
             // dd($entries);
 
-    
+
             foreach ($entries as $entry) {
-                $employee_name = $entry->name ?? "Employee Name Not Found"; // If employee name not found in 
+                $employee_name = $entry->name ?? "Employee Name Not Found"; // If employee name not found in
                 $late_status = AttendanceHelper::calculateLateStatus($entry->intime);
-            
+
                 $total_duty = AttendanceHelper::calculateTotalDuty($entry->intime, $entry->outtime);
-            
+
                 // check if the entry already exists
                 $existing_entry = DB::table('employee_attendance_entries')
                     ->where('name', $employee_name)
                     ->where('attend_date', $entry->attend_date)
                     ->where('intime', $entry->intime)
                     ->first();
-            
+
                 // insert the entry only if it does not exist
                 if (!$existing_entry) {
                     DB::table('employee_attendance_entries')->insert([
@@ -46,11 +46,11 @@ class EmployeeAttendenceController extends Controller
                     ]);
                 }
             }
-            
+
             return redirect()
             ->route('attendance.show')
             ->with('success', 'Employee Attendance entries Generated successfully');
-            
+
 }
 
     public function show(){
@@ -69,7 +69,7 @@ class EmployeeAttendenceController extends Controller
             compact(
                 'commons',
                 'employees',
-            
+
             )
         );
     }

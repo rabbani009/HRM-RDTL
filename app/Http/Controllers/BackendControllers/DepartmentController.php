@@ -54,7 +54,6 @@ class DepartmentController extends Controller
                 'commons',
                 'offices',
                 'departments'
-                
             )
         );
     }

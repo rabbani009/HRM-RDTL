@@ -10,7 +10,7 @@ use App\Http\Controllers\AuthControllers\{
     ResetPasswordController,
 };
 use App\Http\Controllers\BackendControllers\{
-    
+
     DashboardController,
     OfficeController,
     DepartmentController,
@@ -20,9 +20,8 @@ use App\Http\Controllers\BackendControllers\{
     UserInfoController,
     AttendencelogController,
     EmployeeAttendenceController,
-    ReportController
-
-
+    ReportController,
+    HolidayController
 };
 
 /*
@@ -61,7 +60,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
     Route::resource('office', OfficeController::class);
     Route::resource('department', DepartmentController::class);
     Route::resource('employee', EmployeeController::class);
-
+    Route::resource('holiday', HolidayController::class);
 
     // Route::get('/view', [UserChecktimeController::class, 'csvview'])->name('view');
     // Route::post('/import', [UserChecktimeController::class, 'import'])->name('import');
@@ -83,14 +82,15 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
 
       Route::get('/attendance/show', [EmployeeAttendenceController::class, 'show'])->name('attendance.show');
 
-      //Monthly report 
+      //Monthly report
 
       Route::get('/attendance/report', [ReportController::class, 'index'])->name('report.index');
 
       Route::post('/generated/report', [ReportController::class, 'generateReport'])->name('report.show');
 
 
-     
+
+
 
 
 
@@ -99,7 +99,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'authenticated'], function 
 
 Route::group(['prefix' => 'ajax', 'as' => 'ajax.'], function (){
     Route::post('get-department-by-office', [AjaxController::class, 'getDepartmentsByOffice'])->name('get-department-by-office');
-    
+
 
 });
 

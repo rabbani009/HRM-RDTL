@@ -25,7 +25,7 @@
                     <span class="badge badge-success">Monthly -></span>
                     Report
                 </p>
-            </a> 
+            </a>
         </li>
 
 
@@ -51,6 +51,16 @@
     >
         <i class="nav-icon fas fa-list"></i>
         <p>Add Department</p>
+    </a>
+</li>
+
+<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+    <a
+        href="{{ route('holiday.create') }}"
+        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+    >
+        <i class="nav-icon fas fa-plus"></i>
+        <p> Add Holiday</p>
     </a>
 </li>
 
@@ -101,7 +111,7 @@
         </p>
     </a>
     <ul class="nav nav-treeview">
-   
+
         <li class="nav-item">
             <a
                 href="{{ route('checktime.index')}}"
@@ -111,7 +121,7 @@
                 <p>Import Excel file</p>
             </a>
         </li>
-      
+
         <li class="nav-item">
             <a
                 href="{{route('attendence.index')}}"
@@ -146,7 +156,7 @@
         </p>
     </a>
     <ul class="nav nav-treeview">
-   
+
         <li class="nav-item">
             <a
                 href=""
@@ -156,7 +166,7 @@
                 <p>Sallary Generate</p>
             </a>
         </li>
-      
+
         <li class="nav-item">
             <a
                 href=""

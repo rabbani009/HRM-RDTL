@@ -18,8 +18,8 @@
 
 @section('content')
     <section class="content">
-  
-           
+
+
             <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Monthly Report</h3>
@@ -33,6 +33,7 @@
                             <th>Employee Name</th>
                             <th>Status</th>
                             <th>Is Friday</th>
+                            <th>Holiday</th>
                             <th>Intime</th>
                             <th>Outtime</th>
                             <th>Late Status</th>
@@ -49,7 +50,7 @@
                             <td>{{ $data['status'] }}</td>
                             <td>
                             <p>
-                                {{ $data["is_friday"] }}:
+                                {{-- {{ $data["is_friday"] }}: --}}
                                 <span
                                     class="badge {{
                                         $data['is_friday'] ==
@@ -69,18 +70,25 @@
 
 
                             </td>
+                            <td > <p>
+                                {{-- {{ $data["holiday"] }}: --}}
+                                <span class="badge badge-{{ $data['holiday'] == 'Holiday' ? 'danger' : 'secondary' }}">
+                                    {{ $data['holiday'] == '-' ? ' ' : 'Holiday' }}
+                                </span>
+                            </p>
+                        </td>
                             <td>{{ $data['intime'] ?? '' }}</td>
                             <td>{{ $data['outtime'] ?? '' }}</td>
                             <td>{{ $data['late_status'] ?? '' }}</td>
                             <td>{{ $data['total_duty'] ?? '' }}</td>
-                          
+
                   @endforeach
-                 
-                   
+
+
                     </tbody>
                     <tfoot>
                     <tr>
-                   
+
                         <th>Date</th>
                         <th>Employee Name</th>
                         <th>Status</th>
@@ -94,7 +102,7 @@
                     </tfoot>
                   </table>
                 </div>
-                <!-- /.card-body -->     
+                <!-- /.card-body -->
 
 
     </section>
@@ -123,7 +131,7 @@
     <script src="{{ asset('AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    
+
         <script src="{{ asset('AdminLTE-3.2.0/dist/js/adminlte.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
         <script src="{{ asset('Custom/js/vfs_fonts.js') }}"></script>
@@ -132,9 +140,9 @@
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 @section('page_level_js_scripts')
- 
 
-    
+
+
 
 <script>
     pdfMake.fonts = {
@@ -161,7 +169,7 @@
     title: 'Bangladesh Business Promotion Council',
     message: '',
     orientation: 'landscape',
-   
+
     customize: function (doc) {
     doc.pageMargins = [10,10,10,10];
     doc.defaultStyle.fontSize = 7;
@@ -201,10 +209,10 @@
     // Inject the object in the document
     doc.content[1].layout = objLayout;
         }
-    
+
     }
-    
-    
+
+
     ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -217,7 +225,7 @@
     "responsive": true,
     });
     });
-    
-    
+
+
     </script>
 @endsection
