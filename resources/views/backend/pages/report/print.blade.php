@@ -93,6 +93,7 @@
                         <th>Employee Name</th>
                         <th>Status</th>
                         <th>Is Friday</th>
+                        <th>Holiday</th>
                         <th>Intime</th>
                         <th>Outtime</th>
                         <th>Late Status</th>
@@ -166,9 +167,10 @@
     {
     text: 'PDF',
     extend: 'pdfHtml5',
-    title: 'Bangladesh Business Promotion Council',
+    title: 'Attendence Sheet',
     message: '',
     orientation: 'landscape',
+    pageSize: 'LEGAL',
 
     customize: function (doc) {
     doc.pageMargins = [10,10,10,10];
