@@ -30,11 +30,13 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                <div class="mb-3">
+                    <strong>Employee Name:</strong> {{ $reportData[0]['employee_name'] }}
+                </div>
                   <table id="example1" class="table table-bordered table-striped table-responsive">
                     <thead>
                     <tr>
-                             <th>Date</th>
-                            <th>Employee Name</th>
+                            <th>Date</th>
                             <th>Status</th>
                             <th>Is Friday</th>
                             <th>Holiday</th>
@@ -49,7 +51,7 @@
 
                     @foreach($reportData as $data)
 
-                        @if($data['status'] == 'Absent' && $data['is_friday'] != 'no' ) 
+                        @if($data['status'] == 'Absent' && $data['is_friday'] != 'no' && $data['holiday'] != 'Holiday' ) 
                             @php $absentCount++;
                         @endphp
                         @endif
@@ -58,7 +60,7 @@
                         @endif
                       <tr>
                             <td>{{ $data['date'] }}</td>
-                            <td>{{ $data['employee_name'] }}</td>
+                           
                             <td>{{ $data['status'] }}</td>
                             <td>
                             <p>
@@ -93,18 +95,34 @@
                             <td>{{ $data['outtime'] ?? '' }}</td>
                             <td>{{ $data['late_status'] ?? '' }}</td>
                             <td>{{ $data['total_duty'] ?? '' }}</td>
-
+                   
                   @endforeach
-
-
+                  <tr style="background-color: #2A2F4F; color:#ffff;">
+                    <td >Total Absent: {{ $absentCount }}</td>
+                    <td></td>
+                    <td ></td>
+                    <td>Total Holidays: {{ $holidayCount }}</td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    
+                </tr>
+                <tr style="background-color: #2A2F4F; color:#ffff;">
+                    <td></td>
+                    <td><span>Employee Name: {{ $data['employee_name'] }}</span></td>
+                    <td></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    
+                
+                </tr>
                     </tbody>
                     <tfoot>
-                <tr>
-                    <th colspan="3"></th>
-                    <th>Total Absent: {{ $absentCount }}</th>
-                    <th colspan="4"></th>
-                    <th>Total Holidays: {{ $holidayCount }}</th>
-                </tr>
+               
             </tfoot>
                   </table>
                 </div>
@@ -172,7 +190,7 @@
     {
     text: 'PDF',
     extend: 'pdfHtml5',
-    title: 'Attendence Sheet',
+    title: 'Employee Attendence Overview',
     message: '',
     orientation: 'potrail',
     pageSize: 'A4',
