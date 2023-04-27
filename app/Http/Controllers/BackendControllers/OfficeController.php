@@ -22,7 +22,7 @@ class OfficeController extends Controller
         $commons['page_title'] = 'Office';
         $commons['content_title'] = 'All office';
         $commons['main_menu'] = 'office';
-        $commons['current_menu'] = 'office_show';
+        $commons['current_menu'] = 'office';
 
         $offices = Office::where('status', 1)->with(['createdBy', 'updatedBy'])->paginate(20);
 
@@ -30,7 +30,7 @@ class OfficeController extends Controller
         compact(
             'commons',
             'offices'
-            
+
         )
     );
 
@@ -66,7 +66,7 @@ class OfficeController extends Controller
         compact(
             'commons',
             'offices'
-            
+
         )
     );
 
@@ -89,7 +89,7 @@ class OfficeController extends Controller
      */
     public function store(OfficeStoreRequest $request)
     {
-        
+
 
         $office = new Office();
         $office->name = $request->validated('office_name');
@@ -128,14 +128,14 @@ class OfficeController extends Controller
         $commons['main_menu'] = 'office';
         $commons['current_menu'] = 'office_show';
 
-      
+
         $offices = Office::where('status', 1)->with(['createdBy', 'updatedBy'])->paginate(20);
 
         return view('backend.pages.office.show',
             compact(
                 'commons',
                 'office',
-              
+
             )
         );
     }

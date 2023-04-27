@@ -22,7 +22,7 @@ class DepartmentController extends Controller
         $commons['page_title'] = 'Depertment';
         $commons['content_title'] = 'List of All Depertment';
         $commons['main_menu'] = 'depertment';
-        $commons['current_menu'] = 'department_index';
+        $commons['current_menu'] = 'depertment';
 
         $departments = Department::where('status', 1)->with(['createdBy', 'updatedBy', 'office'])->paginate(20);
         //dd($departments);
@@ -44,7 +44,7 @@ class DepartmentController extends Controller
         $commons['page_title'] = 'Depertment';
         $commons['content_title'] = 'Create a New Depertment';
         $commons['main_menu'] = 'depertment';
-        $commons['current_menu'] = 'department_index';
+        $commons['current_menu'] = 'depertment';
 
         $offices = Office::where('status', 1)->get();
         $departments = Department::where('status', 1)->with(['createdBy', 'updatedBy', 'office'])->paginate(20);

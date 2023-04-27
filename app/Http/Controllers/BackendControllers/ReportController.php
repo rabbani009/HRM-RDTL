@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\Holiday;
 use Carbon\Carbon;
+use PDF;
 
 class ReportController extends Controller
 {
@@ -16,8 +17,8 @@ class ReportController extends Controller
 
         $commons['page_title'] = 'Monthly Attendence Report';
         $commons['content_title'] = 'Show Attendence';
-        $commons['main_menu'] = 'Reports';
-        $commons['current_menu'] = 'reports_employees';
+        $commons['main_menu'] = 'report';
+        $commons['current_menu'] = 'report';
 
         $emp = Employee::where('status', 1)->with(['createdBy', 'updatedBy'])->get();
 
@@ -42,8 +43,8 @@ class ReportController extends Controller
 
         $commons['page_title'] = 'Monthly Attendence Report';
         $commons['content_title'] = 'Show Attendence';
-        $commons['main_menu'] = 'Reports';
-        $commons['current_menu'] = 'reports_employees';
+        $commons['main_menu'] = 'report';
+        $commons['current_menu'] = 'report';
 
         // dd($request->all());
         $startDate = Carbon::parse($request->input('start_date'));
@@ -56,20 +57,17 @@ class ReportController extends Controller
         // dd($dateRange);
 
         $reportData= [];
-
         foreach ($dateRange as $date) {
             $attendance = DB::table('employee_attendance_entries')
                 ->where('name', $employeeName)
                 ->whereDate('attend_date', $date)
                 ->first();
 
-
             $holiday = DB::table('holidays')
             ->where('status',1)
             ->where('holiday_date',$date)
             ->first();
 
-            
             $data = [
                 'date' => $date->format('Y-m-d'),
                 'employee_name' => $employeeName,

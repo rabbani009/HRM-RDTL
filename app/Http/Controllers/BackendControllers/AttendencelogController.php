@@ -18,6 +18,8 @@ public function index()
 {
 
     // Retrieve data from the check_times and user_infos tables
+        $commons['main_menu'] = 'Excel';
+        $commons['current_menu'] = 'attendance';
 
         $attendances = DB::table('check_times')
         ->join('user_infos', 'check_times.user_id', '=', 'user_infos.user_id')

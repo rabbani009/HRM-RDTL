@@ -22,8 +22,8 @@ class EmployeeController extends Controller
     {
         $commons['page_title'] = 'Employee List';
         $commons['content_title'] = 'Employee';
-        $commons['main_menu'] = 'employee';
-        $commons['current_menu'] = 'employee_list';
+        $commons['main_menu'] = 'employee_index';
+        $commons['current_menu'] = 'employee_index';
 
         $employee = Employee::where('status',1)
                     ->with(['getOffice', 'getDepartment', 'createdBy', 'updatedBy'])->paginate(6);
@@ -33,8 +33,8 @@ class EmployeeController extends Controller
             compact(
                 'commons',
                 'employee',
-               
-                
+
+
             )
         );
     }
@@ -49,22 +49,22 @@ class EmployeeController extends Controller
         $commons['page_title'] = 'Employee';
         $commons['content_title'] = 'Add new Employee';
         $commons['main_menu'] = 'employee';
-        $commons['current_menu'] = 'employee_create';
+        $commons['current_menu'] = 'employee';
 
         $offices = Office::where('status', 1)
-         ->pluck('name', 'id'); 
+         ->pluck('name', 'id');
 
         // dd( $councils);
-  
+
         $departments = Department::where('status', 1)->pluck('name', 'id');
-    
+
 
         return view('backend.pages.employee.create',
             compact(
                 'commons',
                 'offices',
                 'departments',
-                
+
             )
         );
     }

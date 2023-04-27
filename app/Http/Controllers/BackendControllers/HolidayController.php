@@ -15,8 +15,8 @@ class HolidayController extends Controller
     {
         $commons['page_title'] = 'Holiday List';
         $commons['content_title'] = 'Holiday List';
-        $commons['main_menu'] = 'Holiday List';
-        $commons['current_menu'] = 'holiday list';
+        $commons['main_menu'] = 'holiday';
+        $commons['current_menu'] = 'holiday';
 
         $holidays = Holiday::where('status',1)->with(['createdBy','updatedBy'])->paginate(10);
         return view('backend.pages.holiday.index',compact('commons','holidays'));
@@ -25,7 +25,7 @@ class HolidayController extends Controller
     {
         $commons['page_title'] = 'Add Holiday';
         $commons['content_title'] = 'Add Holiday';
-        $commons['main_menu'] = 'Add Holiday';
+        $commons['main_menu'] = 'holiday';
         $commons['current_menu'] = 'holiday';
 
         $holidays = Holiday::where('status',1)->with(['createdBy','updatedBy'])->paginate(10);

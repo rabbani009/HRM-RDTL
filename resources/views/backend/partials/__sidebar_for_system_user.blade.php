@@ -18,7 +18,7 @@
         >
              <a
                 href="{{ route('report.index') }}"
-                class="nav-link @if($commons['current_menu'] == 'Activity-report') active @endif"
+                class="nav-link @if($commons['current_menu'] == 'report') active @endif"
             >
                 <i class="fa fa-sticky-note" style="font-size: 15px"></i>
                 <p>
@@ -34,30 +34,30 @@
 
 <li class="nav-header">Company</li>
 
-<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+<li class="nav-item @if($commons['main_menu'] == 'office') menu-open @endif">
     <a
         href="{{ route('office.create') }}"
-        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+        class="nav-link @if($commons['current_menu'] == 'office') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>
         <p> Add Office</p>
     </a>
 </li>
 
-<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+<li class="nav-item @if($commons['main_menu'] == 'depertment') menu-open @endif">
     <a
         href="{{ route('department.create') }}"
-        class="nav-link @if($commons['current_menu'] == 'activity_index') active @endif"
+        class="nav-link @if($commons['current_menu'] == 'depertment') active @endif"
     >
         <i class="nav-icon fas fa-list"></i>
         <p>Add Department</p>
     </a>
 </li>
 
-<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+<li class="nav-item @if($commons['main_menu'] == 'holiday') menu-open @endif">
     <a
         href="{{ route('holiday.create') }}"
-        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+        class="nav-link @if($commons['current_menu'] == 'holiday') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>
         <p> Add Holiday</p>
@@ -78,10 +78,10 @@
 </li> --}}
 
 
-<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+<li class="nav-item @if($commons['main_menu'] == 'employee') menu-open @endif">
     <a
         href="{{ route('employee.create') }}"
-        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+        class="nav-link @if($commons['current_menu'] == 'employee') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>
         <p>Add Employee</p>
@@ -89,20 +89,20 @@
 </li>
 
 
-<li class="nav-item @if($commons['main_menu'] == 'activity') menu-open @endif">
+<li class="nav-item @if($commons['main_menu'] == 'employee_index') menu-open @endif">
     <a
         href="{{ route('employee.index') }}"
-        class="nav-link @if($commons['current_menu'] == 'activity_create') active @endif"
+        class="nav-link @if($commons['current_menu'] == 'employee_index') active @endif"
     >
         <i class="nav-icon fas fa-plus"></i>
         <p>Manage Employee</p>
     </a>
 </li>
 
-<li class="nav-item @if($commons['main_menu'] == 'trainer') menu-open @endif">
+<li class="nav-item @if($commons['main_menu'] == 'Excel') menu-open @endif">
     <a
         href="#"
-        class="nav-link @if($commons['main_menu'] == 'trainer') active @endif"
+        class="nav-link @if($commons['main_menu'] == '') active @endif"
     >
         <i class="nav-icon fas fa-user-tie"></i>
         <p>
@@ -112,15 +112,28 @@
     </a>
     <ul class="nav nav-treeview">
 
+
+        <li class="nav-item">
+            <a
+                href="{{ route('userinfo.index')}}"
+                class="nav-link @if($commons['current_menu'] == 'Excel_userinfo') active @endif"
+            >
+                <i class="fas fa-plus nav-icon"></i>
+                <p>Import UserInfo Data</p>
+            </a>
+        </li>
+
         <li class="nav-item">
             <a
                 href="{{ route('checktime.index')}}"
-                class="nav-link @if($commons['current_menu'] == 'trainer_create') active @endif"
+                class="nav-link @if($commons['current_menu'] == 'Excel_index') active @endif"
             >
                 <i class="fas fa-plus nav-icon"></i>
-                <p>Import Excel file</p>
+                <p>Import Check-in Data</p>
             </a>
         </li>
+
+
 
         <li class="nav-item">
             <a

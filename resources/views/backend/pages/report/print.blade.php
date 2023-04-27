@@ -21,16 +21,22 @@
 
 
             <div class="card">
+        @php
+            $absentCount = 0;
+            $holidayCount = 0;
+        @endphp
                 <div class="card-header">
                   <h3 class="card-title">Monthly Report</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                <div class="mb-3">
+                    <strong>Employee Name:</strong> {{ $reportData[0]['employee_name'] }}
+                </div>
                   <table id="example1" class="table table-bordered table-striped table-responsive">
                     <thead>
                     <tr>
-                             <th>Date</th>
-                            <th>Employee Name</th>
+                            <th>Date</th>
                             <th>Status</th>
                             <th>Is Friday</th>
                             <th>Holiday</th>
@@ -44,9 +50,17 @@
                     <tbody>
 
                     @foreach($reportData as $data)
+
+                        @if($data['status'] == 'Absent' && $data['is_friday'] != 'no' && $data['holiday'] != 'Holiday' )
+                            @php $absentCount++;
+                        @endphp
+                        @endif
+                        @if($data['holiday'] == 'Holiday')
+                            @php $holidayCount++; @endphp
+                        @endif
                       <tr>
                             <td>{{ $data['date'] }}</td>
-                            <td>{{ $data['employee_name'] }}</td>
+
                             <td>{{ $data['status'] }}</td>
                             <td>
                             <p>
@@ -83,23 +97,33 @@
                             <td>{{ $data['total_duty'] ?? '' }}</td>
 
                   @endforeach
+                  <tr style="background-color: #2A2F4F; color:#ffff;">
+                    <td >Total Absent: {{ $absentCount }}</td>
+                    <td></td>
+                    <td ></td>
+                    <td>Total Holidays: {{ $holidayCount }}</td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+
+                </tr>
+                <tr style="background-color: #2A2F4F; color:#ffff;">
+                    <td></td>
+                    <td><span>Employee Name: {{ $data['employee_name'] }}</span></td>
+                    <td></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
 
 
+                </tr>
                     </tbody>
                     <tfoot>
-                    <tr>
 
-                        <th>Date</th>
-                        <th>Employee Name</th>
-                        <th>Status</th>
-                        <th>Is Friday</th>
-                        <th>Intime</th>
-                        <th>Outtime</th>
-                        <th>Late Status</th>
-                        <th>Total Duty</th>
-
-                    </tr>
-                    </tfoot>
+            </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -166,12 +190,13 @@
     {
     text: 'PDF',
     extend: 'pdfHtml5',
-    title: 'Bangladesh Business Promotion Council',
+    title: 'Employee Attendence Monthly Overview',
     message: '',
-    orientation: 'landscape',
+    orientation: 'potrait',
+    pageSize: 'A4',
 
     customize: function (doc) {
-    doc.pageMargins = [10,10,10,10];
+    doc.pageMargins = [40,50,50,40];
     doc.defaultStyle.fontSize = 7;
     doc.styles.tableHeader.fontSize = 7;
     doc.styles.title.fontSize = 9;
@@ -182,7 +207,7 @@
     doc['footer']=(function(page, pages) {
     return {
         columns: [
-            'This is your left footer column',
+            'Employee Attendence Monthly Overview',
             {
                 // This is the right column
                 alignment: 'right',

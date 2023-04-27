@@ -14,7 +14,7 @@ class CheckTimeController extends Controller
 
         $commons['page_title'] = 'ADD Excel Files';
         $commons['content_title'] = 'ADD Excel Files';
-        $commons['main_menu'] = 'Excel_index';
+        $commons['main_menu'] = 'Excel';
         $commons['current_menu'] = 'Excel_index';
 
 
@@ -42,18 +42,18 @@ public function store(Request $request)
     ]);
 
     // return $validated;
-    
+
     // Create a new CheckTimeImport object with the date range filter
     $import = new CheckTimeImport($startDate, $endDate);
 
     // Import the file using the Excel facade
     Excel::import($import, $file);
-    
+
     // Get the imported data that passed the date range filter
     $imported_data = $import->getData();
 
     // dd( $imported_data);
-    
+
     // Loop through the imported data and create CheckTime models
     foreach ($imported_data as $data) {
         CheckTime::create($data);
