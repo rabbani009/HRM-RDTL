@@ -196,7 +196,7 @@
     pageSize: 'A4',
 
     customize: function (doc) {
-    doc.pageMargins = [50,50,20,50];
+    doc.pageMargins = [40,50,50,40];
     doc.defaultStyle.fontSize = 7;
     doc.styles.tableHeader.fontSize = 7;
     doc.styles.title.fontSize = 9;
