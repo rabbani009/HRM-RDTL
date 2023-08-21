@@ -34,6 +34,8 @@ class EmployeeTableSeeder extends Seeder
             'created_by' => 1
         ]);
 
+
+
         DB::table('employees')->insert([
             'office' => '2',
             'department' => '1',
@@ -288,23 +290,6 @@ class EmployeeTableSeeder extends Seeder
             'created_by' => 1
         ]);
 
-        DB::table('employees')->insert([
-            'office' => '2',
-            'department' => '1',
-            'name' => 'Masora Yesmin',
-            'user_id' => '829',
-            'gender' => 0,
-            'email' => 'sayed@gmail16.com',
-            'date_of_birth' => '2023-04-25',
-            'join_date' => '2023-04-17',
-            'sallary' => '20000',
-            'contact_number' => '012554465548',
-            'employee_status' => 'Fulltime',
-            'designation' => 'Manager',
-            'status' => 1,
-            'created_at' => Carbon::now(),
-            'created_by' => 1
-        ]);
 
         DB::table('employees')->insert([
             'office' => '2',
@@ -819,41 +804,7 @@ class EmployeeTableSeeder extends Seeder
             'created_by' => 1
         ]);
 
-        DB::table('employees')->insert([
-            'office' => '2',
-            'department' => '1',
-            'name' => 'Alifa Rahman',
-            'user_id' => '880',
-            'gender' => 0,
-            'email' => 'sayed@gmail43.com',
-            'date_of_birth' => '2023-04-25',
-            'join_date' => '2023-04-17',
-            'sallary' => '20000',
-            'contact_number' => '012554465548',
-            'employee_status' => 'Fulltime',
-            'designation' => 'Manager',
-            'status' => 1,
-            'created_at' => Carbon::now(),
-            'created_by' => 1
-        ]);
 
-        DB::table('employees')->insert([
-            'office' => '2',
-            'department' => '1',
-            'name' => 'Asif Khan',
-            'user_id' => '892',
-            'gender' => 0,
-            'email' => 'sayed@gmail500212.com',
-            'date_of_birth' => '2023-04-25',
-            'join_date' => '2023-04-17',
-            'sallary' => '20000',
-            'contact_number' => '012554465548',
-            'employee_status' => 'Fulltime',
-            'designation' => 'Manager',
-            'status' => 1,
-            'created_at' => Carbon::now(),
-            'created_by' => 1
-        ]);
         DB::table('employees')->insert([
             'office' => '2',
             'department' => '1',
@@ -879,42 +830,6 @@ class EmployeeTableSeeder extends Seeder
             'user_id' => '880',
             'gender' => 0,
             'email' => 'sayed@gmail44.com',
-            'date_of_birth' => '2023-04-25',
-            'join_date' => '2023-04-17',
-            'sallary' => '20000',
-            'contact_number' => '012554465548',
-            'employee_status' => 'Fulltime',
-            'designation' => 'Manager',
-            'status' => 1,
-            'created_at' => Carbon::now(),
-            'created_by' => 1
-        ]);
-
-        DB::table('employees')->insert([
-            'office' => '2',
-            'department' => '1',
-            'name' => 'Sajal Chandra Nath',
-            'user_id' => '911',
-            'gender' => 0,
-            'email' => 'sayed@gmail45.com',
-            'date_of_birth' => '2023-04-25',
-            'join_date' => '2023-04-17',
-            'sallary' => '20000',
-            'contact_number' => '012554465548',
-            'employee_status' => 'Fulltime',
-            'designation' => 'Manager',
-            'status' => 1,
-            'created_at' => Carbon::now(),
-            'created_by' => 1
-        ]);
-
-        DB::table('employees')->insert([
-            'office' => '2',
-            'department' => '1',
-            'name' => 'Sajal Chandra Nath',
-            'user_id' => '911',
-            'gender' => 0,
-            'email' => 'sayed@gmail46.com',
             'date_of_birth' => '2023-04-25',
             'join_date' => '2023-04-17',
             'sallary' => '20000',
